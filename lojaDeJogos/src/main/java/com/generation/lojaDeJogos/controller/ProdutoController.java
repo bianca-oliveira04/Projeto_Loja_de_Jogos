@@ -25,7 +25,7 @@ import com.generation.lojaDeJogos.model.Produto;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/produto")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProdutoController {
 	
@@ -48,7 +48,7 @@ public class ProdutoController {
  }
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List <Produto>> getByNome(@PathVariable String nome){
-		return ResponseEntity.ok(produtoRepository.findAllByTituloContainingIgnoreCase(nome));	
+		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));	
 	}
 	
 	@PostMapping

@@ -24,7 +24,7 @@ import com.generation.lojaDeJogos.model.Categoria;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/temas")
+@RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
 
@@ -42,11 +42,7 @@ public class CategoriaController {
 		return categoriaRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-	}
 	
-	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<Categoria>> getByTitle(@PathVariable String descricao){
-		return ResponseEntity.ok(categoriaRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria){

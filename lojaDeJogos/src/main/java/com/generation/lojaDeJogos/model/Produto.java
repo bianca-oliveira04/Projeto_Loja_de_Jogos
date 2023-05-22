@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -25,19 +26,16 @@ public class Produto {
 	@Size(min = 1, max = 100, message = "Este atributo tem que ter no mínimo 1 caracteres e no máximo 100 caracteres")
 	private String nome;
 	
-	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	@Size(min = 10, max = 1000, message = "Este atributo tem que ter no mínimo 10 caracteres e no máximo 1000 caracteres")
-	private String descrição;
 	
 	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
 	@Size(min = 1, max = 100, message = "Este atributo tem que ter no mínimo 1 caracteres e no máximo 1000 caracteres")
 	private String console;
 	
-	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	private Long quantidade;
+	@NotNull(message = "Este atributo é de preenchimento obrigatório")
+	private Integer quantidade;
 	
-	@NotBlank(message = "Este atributo é de preenchimento obrigatório")
-	private float preco;
+	@NotNull(message = "Este atributo é de preenchimento obrigatório")
+	private Double preco;
 	
 	
 	
@@ -50,7 +48,7 @@ public class Produto {
 	}
 
 	@ManyToOne
-	@JsonIgnoreProperties("produto")
+	@JsonIgnoreProperties("produtos")
     private Categoria categoria;
 
 	public Long getId() {
@@ -69,14 +67,6 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public String getDescrição() {
-		return descrição;
-	}
-
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
-	}
-
 	public String getConsole() {
 		return console;
 	}
@@ -85,19 +75,19 @@ public class Produto {
 		this.console = console;
 	}
 
-	public Long getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Long quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public float getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(float preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 	
